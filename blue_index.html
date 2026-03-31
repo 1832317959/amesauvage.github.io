@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>lovely</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 马卡龙色系 动态流动背景 */
+body {
+  background: linear-gradient(45deg,
+    #f8c8dc, /* 浅粉 */
+    #c7e4ff, /* 浅蓝 */
+    #c2f0d1, /* 薄荷绿 */
+    #ffe1a8, /* 奶油黄 */
+    #e2d2f2  /* 淡紫 */
+  );
+  background-size: 500% 500%;
+  animation: flow 18s ease infinite;
+}
+
+@keyframes flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 中间文字 */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 17px;
+  opacity: 0.95;
+}
+</style>
+</head>
+
+<body>
+<div class="content">
+  <h1>我的宝宝</h1>
+  <p>崔艺蓝</p>
+</div>
+</body>
+</html>
