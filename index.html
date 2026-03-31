@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>lovely</title>
+<title>给我的煲煲 ❤️</title>
 <style>
 * {
   margin: 0;
@@ -26,13 +26,12 @@ body {
   );
   background-size: 400% 400%;
   animation: gradientFlow 15s ease infinite;
-
-  /* 屏幕居中 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
+  position: relative;
 }
 
 @keyframes gradientFlow {
@@ -41,108 +40,270 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* 标题彩色流光渐变 */
 h1 {
-  color: #fff;
-  font-size: 36px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  text-align: center;
+  font-size: 46px;
+  font-weight: bold;
+  background: linear-gradient(90deg,#fff,#ffc0f0,#fff,#c2e9fb,#fff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 3s linear infinite;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5),0 0 40px rgba(255,180,220,0.3);
 }
 
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* 玻璃按钮 */
 .glass-btn {
-  padding: 14px 48px;
-  font-size: 18px;
+  padding: 16px 52px;
+  font-size: 20px;
   color: #fff;
   background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .glass-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
 }
 
 .glass-btn:active {
   transform: translateY(0);
 }
 
-/* 爱心漂浮样式 */
+/* 震动 */
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  75%{transform:translateX(5px)}
+}
+
+/* 点击爱心漂浮 */
 .heart {
   position: fixed;
   pointer-events: none;
-  font-size: 24px;
-  animation: heartFly 1.5s ease forwards;
+  animation: heartMove 1.6s ease forwards;
+  z-index: 999;
 }
 
-@keyframes heartFly {
+@keyframes heartMove {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotate(0deg);
   }
   100% {
     opacity: 0;
-    transform: translateY(-100px) scale(1.5);
+    transform: translateY(-120px) scale(1.6) rotate(20deg);
   }
 }
 
-/* 弹出文字 */
+/* 全屏飘落爱心 */
+.fall-heart {
+  position: fixed;
+  pointer-events: none;
+  animation: fallDown 4s linear forwards;
+  z-index: 1;
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 星星闪烁 */
+.star {
+  position: fixed;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: starTwinkle 2s infinite alternate;
+  z-index: 0;
+}
+
+@keyframes starTwinkle {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* 弹窗文字 */
 .pop-text {
   position: fixed;
   color: #fff;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   pointer-events: none;
-  animation: popText 1s ease forwards;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  animation: popUp 1.2s ease forwards;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  z-index: 999;
 }
 
-@keyframes popText {
+@keyframes popUp {
   0% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(-60px) scale(1.2);
+    transform: translateY(-80px) scale(1.3);
   }
+}
+
+/* 表白弹窗 */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  background: rgba(255,255,255,0.2);
+  padding: 40px 60px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.4);
+  z-index: 9999;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+  transition: 0.5s ease;
+}
+.modal.show {
+  transform: translate(-50%,-50%) scale(1);
+}
+.modal p {
+  margin-bottom: 20px;
+}
+.modal button {
+  padding: 10px 30px;
+  background: rgba(255,255,255,0.3);
+  border: 1px solid #fff;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
 </head>
+
 <body>
-  <h1>我的煲煲</h1>
+  <h1>我的煲煲 ❤️</h1>
   <button class="glass-btn" onclick="showLove()">崔艺蓝</button>
 
+  <!-- 表白弹窗 -->
+  <div class="modal" id="modal">
+    <p>我最爱的煲煲<br>满心满眼都是你 💕</p>
+    <button onclick="closeModal()">我知道啦～</button>
+  </div>
+
 <script>
+// 背景音乐
+const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/10/25/audio_9da9fb91c2.mp3");
+audio.loop = true;
+audio.volume = 0.2;
+window.onload = () => {
+  audio.play().catch(() => {});
+  startFallingHearts();
+  createStars();
+};
+
+// 点击爱心+文字+震动+弹窗
 function showLove() {
-  const body = document.body;
   const btn = document.querySelector('.glass-btn');
-  const rect = btn.getBoundingClientRect();
+  btn.style.animation = 'shake 0.3s';
+  setTimeout(() => btn.style.animation = '', 300);
 
-  // 爱心
+  audio.volume = 0.5;
+
+  const texts = [
+    '超级爱你','么么哒','只爱你','煲煲贴贴',
+    '蓝最可爱','永远喜欢你','满心都是你',
+    '爱你一万年','你最珍贵','只对你心动'
+  ];
+  const txt = texts[Math.floor(Math.random()*texts.length)];
+
+  // 爆炸爱心
+  for(let i=0;i<10;i++) createHeart(btn, txt);
+
+  // 随机弹出表白窗
+  if(Math.random() > 0.5) {
+    document.getElementById('modal').classList.add('show');
+  }
+}
+
+// 创建点击爱心
+function createHeart(btn, txt) {
+  const r = btn.getBoundingClientRect();
+  const x = r.left + r.width/2 + (Math.random()-0.5)*150;
+  const y = r.top + r.height/2 + (Math.random()-0.5)*50;
+
   const heart = document.createElement('div');
-  heart.innerText = '❤️';
+  heart.innerText = ['❤️','💖','💗','💓','💕'][Math.floor(Math.random()*5)];
   heart.className = 'heart';
-  heart.style.left = rect.left + rect.width / 2 - 12 + 'px';
-  heart.style.top = rect.top + 'px';
-  body.appendChild(heart);
-  setTimeout(() => heart.remove(), 1500);
+  heart.style.left = x+'px';
+  heart.style.top = y+'px';
+  heart.style.fontSize = (22+Math.random()*18)+'px';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(), 1600);
 
-  // 文字
-  const texts = ['超级爱你', '么么哒', '只爱你', '煲煲贴贴', '蓝宝最可爱'];
-  const randomText = texts[Math.floor(Math.random() * texts.length)];
-  const pop = document.createElement('div');
-  pop.innerText = randomText;
-  pop.className = 'pop-text';
-  pop.style.left = rect.left + rect.width / 2 - 50 + 'px';
-  pop.style.top = rect.top - 40 + 'px';
-  body.appendChild(pop);
-  setTimeout(() => pop.remove(), 1000);
+  if(Math.random()>0.6) {
+    const pop = document.createElement('div');
+    pop.innerText = txt;
+    pop.className = 'pop-text';
+    pop.style.left = r.left + r.width/2 - 70 + 'px';
+    pop.style.top = r.top - 70 + 'px';
+    document.body.appendChild(pop);
+    setTimeout(()=>pop.remove(), 1200);
+  }
+}
+
+// 全屏爱心雨
+function startFallingHearts() {
+  setInterval(()=>{
+    const h = document.createElement('div');
+    h.className = 'fall-heart';
+    h.innerText = ['❤️','💖','💗','💓','💝'][Math.floor(Math.random()*5)];
+    h.style.left = Math.random()*100+'vw';
+    h.style.fontSize = (16+Math.random()*22)+'px';
+    h.style.animationDuration = (3+Math.random()*5)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), 8000);
+  }, 350);
+}
+
+// 全屏星星闪烁
+function createStars() {
+  for(let i=0;i<100;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 2+Math.random()*4;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.left = Math.random()*100+'vw';
+    s.style.top = Math.random()*100+'vh';
+    s.style.animationDelay = Math.random()*2+'s';
+    document.body.appendChild(s);
+  }
+}
+
+// 关闭弹窗
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
 }
 </script>
 </body>
