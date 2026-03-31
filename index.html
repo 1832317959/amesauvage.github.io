@@ -36,33 +36,41 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* 中间文字卡片 */
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 16px;
-}
-
-p {
-  font-size: 18px;
-  opacity: 0.9;
-}
-</style>
-</head>
-
-<body>
-<div class="content">
-  <h1>我的煲煲</h1>
-  <p>崔艺蓝</p>
-</div>
-</body>
+/* 标题样式 */
+ h1 {
+   color: #fff;
+   font-size: 36px;
+   text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+ }
+ /* 玻璃效果按钮（矩形 + 圆角 + 透明）*/
+ .glass-btn {
+   padding: 14px 48px;
+   font-size: 18px;
+   color: #fff;
+   background: rgba(255, 255, 255, 0.15);
+   border: 1px solid rgba(255, 255, 255, 0.3);
+   border-radius: 16px; /* 圆角 */
+   backdrop-filter: blur(8px); /* 玻璃模糊 */
+   -webkit-backdrop-filter: blur(8px);
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ }
+ /* 鼠标悬浮效果 */
+ .glass-btn:hover {
+   background: rgba(255, 255, 255, 0.25);
+   transform: translateY(-3px);
+   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+ }
+ /* 点击效果 */
+ .glass-btn:active {
+   transform: translateY(0);
+ }
+ </style>
+ </head>
+ <body>
+   <h1>我的煲煲</h1>
+   <!-- 玻璃效果按钮 -->
+   <button class="glass-btn">崔艺蓝</button>
+ </body>
 </html>
